@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hand.training.mybatis_practice.mapper.StudentMapper">
+    <resultMap id="studentMap" type = "com.hand.training.mybatis_practice.entity.Student">
+        <id column="s_id" property="id"/>
+        <id column="s_name" property="name"/>
+        <id column="s_sex" property="sex"/>
+        <id column="s_brith" property="birthday"/>
+    </resultMap>
+
+    <select id="findById" parameterType="long" resultMap="studentMap">
+        SELECT * FROM student WHERE s_id = #{id}
+    </select>
+
+    <insert
+            id="create"
+            parameterType="com.hand.training.mybatis_practice.entity.Student">
+        INSERT INTO student (s_id, s_name, s_brith, s_sex)
+        VALUES(#{id}, #{name}, #{birthday}, #{sex})
+    </insert>
+
+</mapper>
